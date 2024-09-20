@@ -1,10 +1,9 @@
 import Navbar from "@/components/modules/main-layout/nav-bar/Navbar";
+import QueryProvider from "@/components/modules/main-layout/query-provider";
 import type { Metadata } from "next";
 import { Space_Grotesk } from 'next/font/google';
-import "./globals.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import QueryProvider from "@/components/modules/main-layout/query-provider";
 import { Toaster } from "react-hot-toast";
+import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],

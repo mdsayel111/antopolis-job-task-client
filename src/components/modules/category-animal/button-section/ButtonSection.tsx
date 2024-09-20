@@ -59,13 +59,14 @@ const ButtonSection = ({ category }: TButtonSectionProps) => {
             toast.success("Animal added successfully!")
             handleAnimalModalClose()
         },
-        onError: (error) => {
+        onError: () => {
             toast.error("Failed to add category");
             handleAnimalModalClose()
         },
     })
 
     // handle crecreate animal
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleCreateAnimal = async (data: any) => {
         // iploading image
         const { url: imgUrl } = await uploadSingleImg(data.img[0])
@@ -75,6 +76,7 @@ const ButtonSection = ({ category }: TButtonSectionProps) => {
     }
 
     // handle create category
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleCreateCategory = async (data: any) => {
         categoryMutation(data)
     }
@@ -90,7 +92,7 @@ const ButtonSection = ({ category }: TButtonSectionProps) => {
             </Modal>
 
             {/* add animal modal */}
-            <Modal loading={categoryLoading} open={animalModalOpen} setOpen={setAnimalModalOpen} handleOpen={handleAnimalModalOpen} handleClose={handleAnimalModalClose} buttonText='Add Animal'>
+            <Modal loading={animalLoading} open={animalModalOpen} setOpen={setAnimalModalOpen} handleOpen={handleAnimalModalOpen} handleClose={handleAnimalModalClose} buttonText='Add Animal'>
                 <Form formTitle='Add Animal' onSubmit={handleCreateAnimal}>
                     <Input name="name" placeholder='Name' type='text' required />
                     <Select name='category' options={category} />

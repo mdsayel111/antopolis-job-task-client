@@ -6,7 +6,7 @@ import { Container } from "@mui/material";
 
 
 const page = async () => {
-  const { data }: { data: TAnimal[] } = await getAllAnimal()
+  const { data }: { data: TAnimal[] } = await getAllAnimal(null)
   return (
     <Container maxWidth="xl" className="my-10">
       <Title>Assests</Title>

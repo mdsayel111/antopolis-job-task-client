@@ -1,6 +1,5 @@
 import config from "@/configs"
 import { TCategory } from "@/types/category"
-import { revalidatePath, revalidateTag } from "next/cache"
 
 // create getAllCategory server action
 export const getAllCategory = async () => {

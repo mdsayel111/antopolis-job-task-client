@@ -20,7 +20,7 @@ const page = async ({ searchParams }: { searchParams: Record<string, unknown> })
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-col-6 mt-10">
                     {
-                        animalData && animalData.map((animal: TAnimal) => <Card data={animal} />)
+                        animalData && animalData.map((animal: TAnimal) => <Card key={animal._id} data={animal} />)
                     }
                 </div>
             </div>
