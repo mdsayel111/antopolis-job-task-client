@@ -11,7 +11,7 @@ type TFormProps = {
 const Form = ({ children, onSubmit, formTitle }: TFormProps) => {
     const methods = useForm()
     return (
-        <div className="space-y-4">
+        <div>
             <h2>{formTitle}</h2>
             <FormProvider {...methods}>
                 <form className="space-y-4" onSubmit={ methods.handleSubmit(onSubmit)}>

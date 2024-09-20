@@ -13,7 +13,7 @@ const page = async () => {
       <div className="my-10 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6">
         {/* render animal card */}
         {
-          data && data.map((animal) => <Card key={animal._id} data={animal} />)
+          data?.map((animal) => <Card key={animal._id} data={animal} />)
         }
       </div>
     </Container>

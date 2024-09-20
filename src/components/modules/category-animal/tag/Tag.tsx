@@ -1,3 +1,4 @@
+"use client"
 import { TCategory } from '@/types/category';
 import Link from 'next/link';
 import React, { Dispatch, SetStateAction } from 'react';
@@ -10,9 +11,7 @@ type TTagProps = {
 }
 
 const Tag = ({ category, currentCategory, setCurrentCateegory }: TTagProps) => {
-    console.log(currentCategory === category._id)
     return (
-        <div>
             <Link 
             href={`/category-animal?category=${category._id}`} 
             // set current category
@@ -21,7 +20,6 @@ const Tag = ({ category, currentCategory, setCurrentCateegory }: TTagProps) => {
                     {category.name}
                 </div>
             </Link>
-        </div>
     );
 };
 

@@ -2,6 +2,7 @@
 import FileInput from '@/components/shared/file-input/FileInput';
 import Form from '@/components/shared/form/Form';
 import Input from '@/components/shared/input/Input';
+import Loader from '@/components/shared/loader/Loader';
 import Modal from '@/components/shared/modal/Modal';
 import Select from '@/components/shared/select/Select';
 import { createAnimal } from '@/services/animal';
@@ -44,7 +45,6 @@ const ButtonSection = ({ category }: TButtonSectionProps) => {
             handleCategoryModalClose()
         },
         onError: (error) => {
-            console.error('Error creating category:', error);
             toast.error("Failed to add category");
             handleCategoryModalClose()
         },
@@ -55,11 +55,12 @@ const ButtonSection = ({ category }: TButtonSectionProps) => {
         mutationFn: createAnimal,
         onSuccess: () => {
             // Invalidate and refetch
-            router.refresh()
             toast.success("Animal added successfully!")
-            handleAnimalModalClose()
+            // handleAnimalModalClose()
+            // router.refresh()
         },
-        onError: () => {
+        onError: (error) => {
+            console.log(error)
             toast.error("Failed to add category");
             handleAnimalModalClose()
         },
@@ -68,11 +69,15 @@ const ButtonSection = ({ category }: TButtonSectionProps) => {
     // handle crecreate animal
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleCreateAnimal = async (data: any) => {
-        // iploading image
-        const { url: imgUrl } = await uploadSingleImg(data.img[0])
-        const newData = { ...data, img: imgUrl }
+        console.log(data)
+        let imgUrl = ""
+        if (data.img) {
+            // iploading image
+            const { url } = await uploadSingleImg(data?.img)
+            imgUrl = url
 
-        animalMutation(newData)
+        }
+        animalMutation({ ...data, img: imgUrl })
     }
 
     // handle create category
@@ -87,7 +92,7 @@ const ButtonSection = ({ category }: TButtonSectionProps) => {
             <Modal loading={categoryLoading} open={categoryModalOpen} setOpen={setCategoryModalOpen} handleClose={handleCategoryModalClose} handleOpen={handleCategoryModalOpen} buttonText='Add Category'>
                 <Form onSubmit={handleCreateCategory} formTitle='Add Category'>
                     <Input name="name" placeholder='Name' type='text' required />
-                    <Button variant='contained' type='submit' className='!bg-black w-full rounded-xl'>Add Category</Button>
+                    <button type='submit' className='!bg-black w-full rounded-xl text-white py-3 px-4 flex justify-center'>{categoryLoading ? <Loader className='text-2xl' /> : "Add Category"}</button>
                 </Form>
             </Modal>
 
@@ -97,7 +102,7 @@ const ButtonSection = ({ category }: TButtonSectionProps) => {
                     <Input name="name" placeholder='Name' type='text' required />
                     <Select name='category' options={category} />
                     <FileInput name='img' placeholder='Image' />
-                    <Button variant='contained' type='submit' className='!bg-black w-full rounded-xl'>Add Animal</Button>
+                    <button type='submit' className='!bg-black w-full rounded-xl text-white py-3 px-4 '>{animalLoading ? <Loader className='text-2xl' /> : "Add Category"}</button>
                 </Form>
             </Modal>
         </div>

@@ -27,13 +27,11 @@ export default function RootLayout({
       <head>
         <title>My Page Title</title>
         <link rel="icon" type="image/x-icon" href="/logo.png"/>
-        <></>
       </head>
       <body
         className={`${spaceGrotesk.className} antialiased bg-black`}
       >
         <QueryProvider>
-
           <Navbar />
           {children}
           <Toaster />

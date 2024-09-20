@@ -9,7 +9,7 @@ const CategorySection = ({ categories }: { categories: TCategory[] }) => {
     return (
         <div className="flex gap-2 flex-wrap">
             {
-                categories.map((category) => <Tag setCurrentCateegory={setCurrentCateegory} key={category._id} category={category} currentCategory={currentCategory} />)
+                categories?.map((category) => <Tag setCurrentCateegory={setCurrentCateegory} key={category._id} category={category} currentCategory={currentCategory} />)
             }
         </div>
     );
