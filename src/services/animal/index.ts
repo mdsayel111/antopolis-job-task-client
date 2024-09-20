@@ -1,17 +1,19 @@
 "use server"
 
 import config from "@/configs"
+import { TAnimal } from "@/types/animal"
 
 // create getAllAnimal server action
-export const getAllAnimal = async () => {
-    const res = await fetch(`${config.baseUrl}/animal`, { cache: "force-cache", next: { tags: ["animals"] } })
+export const getAllAnimal = async (queryStrimg: string) => {
+    const res = await fetch(`${config.baseUrl}/animal?category=${queryStrimg}`, { cache: "no-store" })
 
     return res.json()
 }
 
-// create getAllCategory server action
-export const getAllCategory = async () => {
-    const res = await fetch(`${config.baseUrl}/category`, { cache: "force-cache", next: { tags: ["categories"] } })
+// create getAllAnimal server action
+export const createAnimal = async (data: TAnimal) => {
+    const res = await fetch(`${config.baseUrl}/animal`, { cache: "no-store", method: "POST", body: JSON.stringify(data), headers: { 'content-type': 'application/json' } })
 
     return res.json()
 }
+

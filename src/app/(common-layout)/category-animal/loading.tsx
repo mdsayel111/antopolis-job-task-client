@@ -1,10 +1,9 @@
-import Title from '@/components/shared/title/Title';
-import React from 'react';
+import Loader from '../../../components/shared/loader/Loader';
 
 const loading = () => {
     return (
-        <div>
-            <h1>Loading...</h1>
+        <div className='min-h-screen flex justify-center items-center'>
+            <Loader className='text-4xl' />
         </div>
     );
 };

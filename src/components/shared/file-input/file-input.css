@@ -1,0 +1,8 @@
+input[type="file"] {
+    direction: rtl; 
+  }
+  
+  input[type="file"]::file-selector-button {
+    direction: ltr; 
+  }
+  

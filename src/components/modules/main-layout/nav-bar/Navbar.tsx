@@ -32,7 +32,7 @@ function Navbar() {
     };
 
     return (
-        <div className='sticky top-0 bg-primary shadow-2xl text-white'>
+        <div className='sticky top-0 z-[78000] bg-primary shadow-2xl text-white'>
             <Container maxWidth="xl">
                 <div className='flex justify-between items-center flex-row-reverse lg:flex-row'>
                     {/* larger device logo */}
