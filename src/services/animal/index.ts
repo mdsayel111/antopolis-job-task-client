@@ -4,8 +4,15 @@ import config from "@/configs"
 import { TAnimal } from "@/types/animal"
 
 // create getAllAnimal server action
-export const getAllAnimal = async (queryStrimg: string | null) => {
-    const res = await fetch(`${config.baseUrl}/animal` + queryStrimg ? `?category=${queryStrimg}}` : "", { cache: "no-store" })
+export const getAllAnimal = async (queryString: string | null) => {
+    let url = `${config.baseUrl}/animal`
+
+    // if queryStrimg exist
+    if (queryString) {
+        url += `?category=${queryString}`
+    }
+    console.log(url)
+    const res = await fetch(url, { cache: "no-store" })
 
     return res.json()
 }
